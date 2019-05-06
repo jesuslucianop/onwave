@@ -19,7 +19,12 @@ class DuenosController extends Controller
            $duenos->Direccion= $request->Direccion;
            $duenos->Telefono= $request->Telefono;
            $duenos->Celular= $request->Celular;
-           $duenos->save();
+           
+           if($duenos->save()){
+               return json_encode("Dueno agregado correctamente");
+           }else{
+               return $duenos->toJson();
+           }
            return $duenos->toJson();
     }
     public function Obtenertodosduenos()
@@ -39,6 +44,6 @@ class DuenosController extends Controller
     }
     public function Eliminardueno()
     {
-
+        
     }
 }
