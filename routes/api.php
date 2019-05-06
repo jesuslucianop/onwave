@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('duenos','DuenosController@Obtenertodosduenos')->name('Obtenertodoslosduenos');
 Route::get('duenos/{id}','DuenosController@Obtenerdueno')->name('Obtenertodoslosduenos');
+Route::post('duenos','DuenosController@CrearduenoS')->name('crearlosduenos');

@@ -7,9 +7,20 @@ use App\Duenos;
 
 class DuenosController extends Controller
 {
-    public function CrearduenoS()
+    public function CrearduenoS(Request $request)
     {
-           
+           $duenos = new Duenos();
+           $duenos->Nombre = $request->Nombre;
+           $duenos->Apellido= $request->Apellido;
+           $duenos->Sexo= $request->Sexo;
+           $duenos->Edad= $request->Edad;
+           $duenos->Cedula= $request->Cedula;
+           $duenos->Carros= $request->Carros;
+           $duenos->Direccion= $request->Direccion;
+           $duenos->Telefono= $request->Telefono;
+           $duenos->Celular= $request->Celular;
+           $duenos->save();
+           return $duenos->toJson();
     }
     public function Obtenertodosduenos()
     {
