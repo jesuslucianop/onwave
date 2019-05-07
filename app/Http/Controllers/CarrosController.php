@@ -27,7 +27,7 @@ class CarrosController extends Controller
     }
     public function Obtenertodoscarros()
     {
-        $carros  =  Duenos::all();
+        $carros  =  carros::all();
         return $carros->toJson();
     }
 
