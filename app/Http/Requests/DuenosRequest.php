@@ -26,8 +26,14 @@ class DuenosRequest extends FormRequest
     {
         return [
         'Nombre'=>'required|max:255'  , 
-        'Cedula' => 'required|min:3|max:15|unique:dueno,Cedula'
-
+        'Apellido'=>'required|max:255'  , 
+        'Sexo'=>'required'  , 
+        'Edad'=>'required|max:3|'  , 
+        'Cedula' => 'required|min:3|max:15|unique:dueno,Cedula',
+        'Carros'=>'required|integer|',
+        'Direccion'=>'required',
+        'Telefono'=>'required',
+          'Celular' =>'required'
         ];
     }
     protected function failedValidation(Validator $validator) {
@@ -36,8 +42,15 @@ class DuenosRequest extends FormRequest
     public function messages()
     {
         return [
-            'Nombre.required' => 'Nombre is required!',
-            'Cedula.unique'=> 'Cedula existente en la base de datos'
+            'Nombre.required' => 'Nombre Es requerido',
+            'Apellido.required' => 'Apellido Es requerido!',
+            'Sexo.required' => 'Sexo Es requerido!',
+            'Cedula.unique'=> 'Cedula existente en la base de datos',
+            'Cedula.required'=> 'Cedula Es requerida',
+            'Carros.required'=> 'Carros es requerido',
+            'Direccion.required'=>'Direccion es requerido',
+            'Telefono.required'=>'Telefono es requerido',
+            'Celular.required'=>'Celular es requerido'
         
         ];
     }
