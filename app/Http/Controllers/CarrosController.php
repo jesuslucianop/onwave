@@ -4,26 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\carros;
+use App\Http\Requests\Carroscreaterequest;
+use App\Http\Requests\CarrosEditrequest;
 
 class CarrosController extends Controller
 {
-    public function Crearcarro(Request $request)
+    public function Crearcarro(Carroscreaterequest $request)
     {
-           $carros = new carros();
-           $carros->Marca = $request->Marca;
-           $carros->Modelo= $request->Modelo;
-           $carros->Ano= $request->Ano;
-           $carros->Trim= $request->Trim;
-           $carros->Duenos= $request->Duenos;
-           $carros->Valor_estimado= $request->Valor_estimado;
-      
-           
-           if($carros->save()){
-               return json_encode("Carro agregado correctamente");
-           }else{
-               return $carros->toJson();
-           }
-           return $carros->toJson();
+
+      $carros = $request->all();
+      if($carros != null)
+      {
+        carros::create($request->all());
+        return $request->all();
+      }else{
+        Return "No se pudo agregar el carro";
+      }
     }
     public function Obtenertodoscarros()
     {
@@ -31,17 +27,51 @@ class CarrosController extends Controller
         return $carros->toJson();
     }
 
-    public function Obtenercarro($id)
+    public function Obtenercarro(Request $request)
     {
-        $carros = find($id);
-
+        $id = $request->Id_Carro;
+        $carros = Carros::find($id);
+        if($carros){
+            return json_encode($carros);
+          }elseif ($carros == null) {
+              return json_encode("Carro no existente ");
+          }
     }
-    public function Editarcarros()
+    public function Editarcarros(CarrosEditrequest $request)
     {
-
+        $id = $request->Id_Carro;
+        $Marca = $request->Marca;
+        $Modelo = $request->Modelo;
+        $Ano = $request->Ano;
+        $Trim = $request->Trim;
+        $Duenos= $request->Duenos;
+        $Valor_estimado= $request->Valor_estimado;
+       
+        $Carro = carros::where('Id_Carro', $id);
+        if($Carro != null){
+            $Carro->update([
+        'Marca' => $Marca,
+        'Ano'=>$Ano,
+        'Trim'=>$Trim,
+        'Duenos'=>$Duenos,
+        'Valor_estimado'=>$Valor_estimado
+        ]);
+        }else{
+            return 
+            "No se encontro";
+        }
+//    return $dueno;
     }
-    public function Eliminarcarro()
+    public function Eliminarcarro(CarrosEditrequest $request)
     {
+        $id = $request->Id_Carro;
+        $Carro= carros::find($id);
         
+  if($Carro != null){
+    $Carro->delete();
+  }else{
+      return "No se encontro";
+  }
+    
     }
 }
