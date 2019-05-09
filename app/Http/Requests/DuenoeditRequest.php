@@ -19,7 +19,7 @@ class DuenoeditRequest extends FormRequest
     public function rules()
     {
         return [
-  
+                'id_dueno'=>'required|integer|'
         ];
     }
     protected function failedValidation(Validator $validator) {
@@ -28,7 +28,8 @@ class DuenoeditRequest extends FormRequest
     public function messages()
     {
         return [
-         
+            'id_dueno.required'=>'El campo id_dueno es requerido',
+         'id_dueno.integer' => 'El campo id_dueno debe ser de numeros enteros'
             
         ];
     }
