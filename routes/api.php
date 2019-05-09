@@ -21,4 +21,5 @@ Route::get('duenos','DuenosController@Obtenertodosduenos')->name('Obtenertodoslo
 Route::get('dueno','DuenosController@Obtenerdueno')->name('Obtenertodoslosduenos');
 Route::post('duenos','DuenosController@CrearduenoS')->name('crearlosduenos');
 Route::put('duenosedit','DuenosController@Editardueno')->name('editarlosduenos');
+Route::delete('duenosborrar','DuenosController@Eliminardueno')->name('eliminalosduenos');
 Route::post('carros','CarrosController@Crearcarro')->name('crearloscarros');
