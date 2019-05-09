@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });*/
 Route::get('carros','CarrosController@Obtenertodoscarros')->name('Obtenertodosloscarros');
 Route::get('duenos','DuenosController@Obtenertodosduenos')->name('Obtenertodoslosduenos');
-Route::get('duenos/{id}','DuenosController@Obtenerdueno')->name('Obtenertodoslosduenos');
+Route::get('dueno','DuenosController@Obtenerdueno')->name('Obtenertodoslosduenos');
 Route::post('duenos','DuenosController@CrearduenoS')->name('crearlosduenos');
+Route::put('duenosedit','DuenosController@Editardueno')->name('editarlosduenos');
 Route::post('carros','CarrosController@Crearcarro')->name('crearloscarros');
