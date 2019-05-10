@@ -60,9 +60,7 @@ class DuenosController extends Controller
         $Telefono= $request->Telefono;
         $Celular= $request->Celular;
 
-        $dueno = Duenos ::where('id_dueno', $id);
-        if($dueno != null){
-            $dueno->update(['Nombre' => $Nombre,
+        $dueno = Duenos ::where('id_dueno', $id)->update(['Nombre' => $Nombre,
         'Apellido'=>$Apellido,
         'Sexo'=>$Sexo,
         'Edad'=>$Edad,
@@ -75,22 +73,11 @@ class DuenosController extends Controller
 
         
         ]);
-        }else{
-            return 
-            "No se encontro";
-        }
-//    return $dueno;
+    return $dueno;
     
     }
-    public function Eliminardueno(DuenoeditRequest $request)
+    public function Eliminardueno()
     {
-        $id = $request->id_dueno;
-        $dueno = Duenos::find($id);
         
-  if($dueno != null){
-    $dueno->delete();
-  }else{
-      return "No se encontro";
-  }
     }
 }
