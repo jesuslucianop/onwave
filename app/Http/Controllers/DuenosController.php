@@ -73,7 +73,7 @@ class DuenosController extends Controller
 
         
         ]);
-    return $dueno;
+    return $request->all();
     
     }
     public function Eliminardueno()

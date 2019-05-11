@@ -32,3 +32,5 @@ Route::put('carros','CarrosController@Editarcarros')->name('editarlosduenos');
 
 //Seccion carro_Dueno
 Route::get('duenosidcarro','Carro_duenoController@Obtenerduenoidcarro')->name('Obtenerduenoporidcarros');
+Route::get('carroiddueno','Carro_duenoController@Obtenercarroiddueno')->name('Obtenercarroiddueno');
+Route::delete('Eliminarduenoycarro','Carro_duenoController@Eliminarduenoycarro')->name('Eliminarduenoycarro');
