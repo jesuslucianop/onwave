@@ -16,12 +16,7 @@ class DuenosController extends Controller
     
      $duenos= Duenos::create($data);
         if($duenos)
-        {
             return $request->all();
-        }
-        return  $request->all();
-        //return $request->Nombre;
-
     }
     public function Obtenertodosduenos()
     {

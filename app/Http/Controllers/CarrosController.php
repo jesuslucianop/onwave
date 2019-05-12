@@ -18,6 +18,8 @@ class CarrosController extends Controller
         carros::create($request->all());
         return $request->all();
       }
+        Return "No se pudo agregar el carro";
+      
     }
     public function Obtenertodoscarros()
     {
@@ -43,15 +45,12 @@ class CarrosController extends Controller
        
         $Carro = carros::where('Id_Carro', $id);
         if($Carro != null){
-            $Carro->update([
-        'Marca' => $Marca,
-        'Ano'=>$Ano,
-        'Trim'=>$Trim,
-        'Duenos'=>$Duenos,
-        'Valor_estimado'=>$Valor_estimado
-        ]);
-        $request->all();
+            $Carro->update(['Marca' => $Marca,'Ano'=>$Ano,'Trim'=>$Trim, 'Duenos'=>$Duenos,'Valor_estimado'=>$Valor_estimado]);
+      return $request->all();
         }
+            return 
+            "No se encontro";
+        
 //    return $dueno;
     }
     public function Eliminarcarro(CarrosEditrequest $request)
@@ -63,6 +62,8 @@ class CarrosController extends Controller
     $Carro->delete();
     return "Eliminado correctamente ";
   }
+      return "No se encontro";
+  
     
     }
 }
