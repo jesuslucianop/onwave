@@ -17,8 +17,6 @@ class CarrosController extends Controller
       {
         carros::create($request->all());
         return $request->all();
-      }else{
-        Return "No se pudo agregar el carro";
       }
     }
     public function Obtenertodoscarros()
@@ -64,8 +62,6 @@ class CarrosController extends Controller
   if($Carro != null){
     $Carro->delete();
     return "Eliminado correctamente ";
-  }else{
-      return "No se encontro";
   }
     
     }
