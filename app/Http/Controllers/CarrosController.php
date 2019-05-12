@@ -30,12 +30,8 @@ class CarrosController extends Controller
     public function Obtenercarro(Request $request)
     {
         $id = $request->Id_Carro;
-        $carros = Carros::find($id);
-        if($carros){
-            return json_encode($carros);
-          }elseif ($carros == null) {
-              return json_encode("Carro no existente ");
-          }
+        $carro = Carros::find($request->Id_Carro);
+        return !$carro ? json_encode("Carro no existente ") : json_encode($carro);
     }
     public function Editarcarros(CarrosEditrequest $request)
     {
@@ -56,9 +52,7 @@ class CarrosController extends Controller
         'Duenos'=>$Duenos,
         'Valor_estimado'=>$Valor_estimado
         ]);
-        }else{
-            return 
-            "No se encontro";
+        $request->all();
         }
 //    return $dueno;
     }
@@ -69,6 +63,7 @@ class CarrosController extends Controller
         
   if($Carro != null){
     $Carro->delete();
+    return "Eliminado correctamente ";
   }else{
       return "No se encontro";
   }

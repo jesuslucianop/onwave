@@ -21,12 +21,12 @@ Route::get('duenos','DuenosController@Obtenertodosduenos')->name('Obtenertodoslo
 Route::get('dueno','DuenosController@Obtenerdueno')->name('Obtenertodoslosduenos');
 Route::post('duenos','DuenosController@CrearduenoS')->name('crearlosduenos');
 Route::put('duenosedit','DuenosController@Editardueno')->name('editarlosduenos');
-
 Route::delete('duenosborrar','DuenosController@Eliminardueno')->name('eliminalosduenos');
 
     //Seccion de las rutas de los carros 
 Route::post('carros','CarrosController@Crearcarro')->name('crearloscarros');
 Route::get('carros','CarrosController@Obtenertodoscarros')->name('Obtenertodosloscarros');
+Route::get('carro','CarrosController@Obtenercarro')->name('Obtenercarro');
 Route::delete('carros','CarrosController@Eliminarcarro')->name('borrarloscarros');
 Route::put('carros','CarrosController@Editarcarros')->name('editarlosduenos');
 

@@ -76,8 +76,17 @@ class DuenosController extends Controller
     return $request->all();
     
     }
-    public function Eliminardueno()
+    public function Eliminardueno(DuenoeditRequest $request)
     {
+        $id = $request->id_dueno;
+        $duenos= Duenos::find($id);
         
+  if($duenos != null){
+    $duenos->delete();
+    return "Eliminado correctamente ";
+  }else{
+      return "No se encontro";
+  }
+    
     }
 }
