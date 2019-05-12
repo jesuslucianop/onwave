@@ -16,20 +16,15 @@ class DuenosController extends Controller
     
      $duenos= Duenos::create($data);
         if($duenos)
-        {
             return $request->all();
-        }else {
-            return json_encode("No se pudo agregar el dueño");
-            return  $request->all();
-        }
-     
-        //return $request->Nombre;
-
     }
     public function Obtenertodosduenos()
     {
         $duenos  =  Duenos::all();
+        if(!empty($duenos))
         return $duenos->toJson();
+        else
+        return "NO existe data en la base de datos";
     }
 
     public function Obtenerdueno(DuenouniqueRequest $request)
@@ -38,8 +33,6 @@ class DuenosController extends Controller
        $dueno =  Duenos::find($id);
       if($dueno){
         return json_encode($dueno);
-      }elseif ($dueno == null) {
-          return json_encode("Usuario no existente ");
       }
     
     }
@@ -76,8 +69,14 @@ class DuenosController extends Controller
     return $request->all();
     
     }
-    public function Eliminardueno()
+    public function Eliminardueno(DuenoeditRequest $request)
     {
+        $id = $request->id_dueno;
+        $duenos= Duenos::find($id);
         
+  if($duenos != null){
+    $duenos->delete();
+    return "Eliminado correctamente ";
+  }
     }
 }

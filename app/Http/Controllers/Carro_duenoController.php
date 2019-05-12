@@ -17,7 +17,10 @@ class Carro_duenoController extends Controller
         ->where('carros.Id_Carro',$id)
         ->select('dueno.*')
         ->get();
+        if(!empty($duenos))
         return $duenos;
+        else 
+            return "No se encontro en la base de datos";
     }
     public function Obtenercarroiddueno(Obtenercarroidduenorequest $request)
     {
@@ -27,7 +30,10 @@ class Carro_duenoController extends Controller
         ->where('carros.Duenos',$id)
         ->select('carros.*')
         ->get();
+        if(!empty($carros))
         return $carros;
+        else
+        return "No se encontro en la base de datos";
     }
     public function Eliminarduenoycarro(Obtenercarroidduenorequest $request)
     {
@@ -35,8 +41,8 @@ class Carro_duenoController extends Controller
         $dueno = DB::table('dueno')->where('id_dueno', $id)->delete();
         $carro = DB::table('carros')->where('Duenos', $id)->delete();
         if($dueno and $carro == true)
-        {
             return "Se Elimino el dueño y todos Sus carros correctamente";
-        }
+        else
+        return "No se pudo eliminar";
     }
 }

@@ -17,9 +17,9 @@ class CarrosController extends Controller
       {
         carros::create($request->all());
         return $request->all();
-      }else{
-        Return "No se pudo agregar el carro";
       }
+        Return "No se pudo agregar el carro";
+      
     }
     public function Obtenertodoscarros()
     {
@@ -30,12 +30,8 @@ class CarrosController extends Controller
     public function Obtenercarro(Request $request)
     {
         $id = $request->Id_Carro;
-        $carros = Carros::find($id);
-        if($carros){
-            return json_encode($carros);
-          }elseif ($carros == null) {
-              return json_encode("Carro no existente ");
-          }
+        $carro = Carros::find($request->Id_Carro);
+        return !$carro ? json_encode("Carro no existente ") : json_encode($carro);
     }
     public function Editarcarros(CarrosEditrequest $request)
     {
@@ -49,17 +45,12 @@ class CarrosController extends Controller
        
         $Carro = carros::where('Id_Carro', $id);
         if($Carro != null){
-            $Carro->update([
-        'Marca' => $Marca,
-        'Ano'=>$Ano,
-        'Trim'=>$Trim,
-        'Duenos'=>$Duenos,
-        'Valor_estimado'=>$Valor_estimado
-        ]);
-        }else{
+            $Carro->update(['Marca' => $Marca,'Ano'=>$Ano,'Trim'=>$Trim, 'Duenos'=>$Duenos,'Valor_estimado'=>$Valor_estimado]);
+      return $request->all();
+        }
             return 
             "No se encontro";
-        }
+        
 //    return $dueno;
     }
     public function Eliminarcarro(CarrosEditrequest $request)
@@ -69,9 +60,10 @@ class CarrosController extends Controller
         
   if($Carro != null){
     $Carro->delete();
-  }else{
-      return "No se encontro";
+    return "Eliminado correctamente ";
   }
+      return "No se encontro";
+  
     
     }
 }
