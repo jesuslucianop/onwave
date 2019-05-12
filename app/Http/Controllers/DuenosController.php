@@ -21,7 +21,10 @@ class DuenosController extends Controller
     public function Obtenertodosduenos()
     {
         $duenos  =  Duenos::all();
+        if(!empty($duenos))
         return $duenos->toJson();
+        else
+        return "NO existe data en la base de datos";
     }
 
     public function Obtenerdueno(DuenouniqueRequest $request)
