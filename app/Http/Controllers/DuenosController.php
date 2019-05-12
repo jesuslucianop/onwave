@@ -23,7 +23,7 @@ class DuenosController extends Controller
         $duenos  =  Duenos::all();
         if(!empty($duenos))
         return $duenos->toJson();
-        else
+        
         return "NO existe data en la base de datos";
     }
 
