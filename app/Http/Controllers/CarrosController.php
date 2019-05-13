@@ -42,11 +42,10 @@ class CarrosController extends Controller
         $Trim = $request->Trim;
         $Duenos= $request->Duenos;
         $Valor_estimado= $request->Valor_estimado;
-       
         $Carro = carros::where('Id_Carro', $id);
         if($Carro != null){
-            $Carro->update(['Marca' => $Marca,'Ano'=>$Ano,'Trim'=>$Trim, 'Duenos'=>$Duenos,'Valor_estimado'=>$Valor_estimado]);
-      return $request->all();
+          $Carro->update(['Marca' => $Marca,'Ano'=>$Ano,'Trim'=>$Trim, 'Duenos'=>$Duenos,'Valor_estimado'=>$Valor_estimado]);
+            return $request->all();
         }
             return 
             "No se encontro";

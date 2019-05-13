@@ -21,7 +21,8 @@ class DuenosController extends Controller
     public function Obtenertodosduenos()
     {
         $duenos  =  Duenos::all();
-        if(!empty($duenos))
+       
+        if (!$duenos->isEmpty())
         return $duenos->toJson();
         
         return "NO existe data en la base de datos";
@@ -31,18 +32,14 @@ class DuenosController extends Controller
     {
         $id=$request->id_dueno;
        $dueno =  Duenos::find($id);
-      if($dueno){
+      if($dueno)
         return json_encode($dueno);
-      }
+      return "Dueño no encontrado";
     
     }
     public function Editardueno(DuenoeditRequest $request)
     {
-      //return $request->all(); 
-
         $id = $request->id_dueno;
-      
-        
         $Nombre = $request->Nombre;
         $Apellido = $request->Apellido;
         $Sexo = $request->Sexo;
@@ -52,31 +49,20 @@ class DuenosController extends Controller
         $Direccion= $request->Direccion;
         $Telefono= $request->Telefono;
         $Celular= $request->Celular;
-
-        $dueno = Duenos ::where('id_dueno', $id)->update(['Nombre' => $Nombre,
-        'Apellido'=>$Apellido,
-        'Sexo'=>$Sexo,
-        'Edad'=>$Edad,
-        'Cedula'=>$Cedula,
-        'Carros'=>$Carros,
-        'Direccion'=>$Direccion,
-        'Telefono'=>$Telefono,
-        'Celular'=>$Celular
-
-
-        
-        ]);
-    return $request->all();
+        $dueno = Duenos ::where('id_dueno', $id)->update(['Nombre' => $Nombre, 'Apellido'=>$Apellido,'Sexo'=>$Sexo,'Edad'=>$Edad,
+        'Cedula'=>$Cedula, 'Carros'=>$Carros,'Direccion'=>$Direccion,'Telefono'=>$Telefono,'Celular'=>$Celular]);
+        return $request->all();
     
     }
+
     public function Eliminardueno(DuenoeditRequest $request)
     {
         $id = $request->id_dueno;
         $duenos= Duenos::find($id);
         
-  if($duenos != null){
-    $duenos->delete();
-    return "Eliminado correctamente ";
-  }
+        if($duenos != null)
+            $duenos->delete();
+            return "Eliminado correctamente ";
+  
     }
 }
