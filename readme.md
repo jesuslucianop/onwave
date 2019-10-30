@@ -1,51 +1,125 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+Funcionalidades del api de carros y dueños
+Métodos:
+Creardueno: Es un método que recibe un Json de tipo POST con los parámetros para
+crear un dueño en la base de datos, si recibe el json y lo crea regresa un json
+con el dueño creado.
+Ruta para probar con postman:
+POST: http://localhost/onwave/public/api/duenos
+Formato del json:
+{
+"Nombre": "Jose",
+"Apellido": "Barranco",
+"Sexo": "Masculino",
+"Edad": 13,
+"Cedula": "00105307534",
+"Carros":2,
+"Direccion":"Calle m ",
+"Telefono":8096589878,
+"Celular":8090004587
+}
+Obtenertodosduenos: Es un método que trae todos los dueños alojados en la base
+de datos por una petición GET y devuelve un JSON con todos los dueños, sino hay
+dueños un mensaje que no existe data.
+Ruta para probar con postman:
+GET: http://localhost/onwave/public/api/duenos
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Obtenerdueno: Es un método que Recibe un JSON con el parámetro id_dueno la cual
+devuelve un JSON con toda la información del id del dueño la cual se mando en la
+petición, sino lo encuentra devuelve un mensaje que no encontró el dueño.
+Ruta para probar con postman:
+GET: http://localhost/onwave/public/api/duenos
+Formato del json:
+{"id_dueno": 21}
 
-## About Laravel
+Editardueno: Es un método que Recibe un JSON con los parámetros especificados en
+el formato del json enviado, la cual contiene el id_dueno la cual busca un dueño y con
+los otros parámetros editar la data del dueño buscado, si los edita correctamente
+devuelve un json con la nueva data.
+Ruta para probar con postman:
+PUT: http://localhost/onwave/public/api/duenos
+Formato del JSON:
+{
+Id_dueno:21,
+"Nombre": "La bella",
+"Apellido": "El apellidoso",
+"Sexo": "Masculino",
+"Edad": 13,
+"Cedula": "00105307534",
+"Carros":2,
+"Direccion":"Calle m ",
+"Telefono":8096589878,
+"Celular":8090004587
+}
+Eliminardueno: Es un método que Recibe un JSON con el id_dueno busca ese id en la
+tabla dueños y elimina, si es correcto devuelve un mensaje de confirmación.
+Ruta para probar con postman:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+DELETE: http://localhost/onwave/public/api/duenos
+Formato del JSON:
+{
+Id_dueno:21
+}
+Crearcarro: esto es un método la cual recibe un JSON Por el método POST con los
+parámetros para crear un carro, cuando lo crea correctamente devuelve un JSON con el
+objeto creado.
+Ruta para probar con postman:
+POST: http://localhost/onwave/public/api/carros
+Formato del JSON:
+{
+“Marca”:”Toyota”,
+“Modelo”:”Corolla”,
+“Ano”:2010,
+“Trim”:”EX”,
+Duenos:18,
+Valor_estimado:200000000
+}
+Obtenertodosloscarros: es un método que recibe una petición GET para
+obtener todos los datos de todos los carros alojados en la base de datos en formato
+JSON, sino encuentra data muestra un mensaje de alerta.
+Ruta para probar con postman:
+GET: http://localhost/onwave/public/api/carros
+Obtenercarro: Este es un método que recibe Un Json con el Id_Carro, y
+busca el carro con ese id y devuelve toda la información en Formato JSON,
+sino la encuentra devuelve información.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Ruta para probar con postman:
+GET: http://localhost/onwave/public/api/carro
+{Id_Carro:14}
+Editarcarros: Este es un método que recibe Un Json con el Id_Carro, y
+busca el carro con ese id y con los otros parámetros del JSON edita el carro
+enviado por ID, Si se edita correctamente envía un JSON con el objeto editado.
+Ruta para probar con postman:
+PUT: http://localhost/onwave/public/api/carros
+{
+Id_Carro:14,
+“Marca”:”Toyota”,
+“Modelo”:”Corolla”,
+“Ano”:2010,
+“Trim”:”EX”,
+Duenos:18,
+Valor_estimado:200000000}
+Eliminarcarro: Este método recibe un JSON ID_Carro En formato DELETE y lo
+busca en la base de datos y si existe elimina ese objeto, sino un mensaje de alerta.
+Ruta para probar con postman:
+DELETE: http://localhost/onwave/public/api/carros
+{Id_Carro:14}
+Obtenerduenoporidcarros: Este es un método que recibe un JSON de tipo GET
+con el Id_Carro para buscar en las dos tablas dueños y carros los dueño que tiene un
+carro y devuelve un JSON con los dueños.
+Ruta para probar con postman:
+GET: http://localhost/onwave/public/api/duenosidcarro
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+{Id_Carro:14}
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
-
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
-
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Obtenercarroiddueno: Este es un método que recibe un JSON de tipo GET con el
+id_dueno para buscar en las dos tablas dueños y carros, los carros que tiene un dueño
+y devuelve un JSON con los carros de ese dueño.
+Ruta para probar con postman:
+GET: http://localhost/onwave/public/api/Obtenercarroiddueno
+{Id_Carro:14}
+Eliminarduenoycarro: Este es un método que recibe un JSON de tipo GET con el
+id_dueno para buscar en las dos tablas dueños y carros, y eliminar el dueño pasado por
+el id junto con los carros relacionados a el
+Ruta para probar con postman:
+GET: http://localhost/onwave/public/api/Eliminarduenoycarro
+{Id_Carro:14}
