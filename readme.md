@@ -1,5 +1,7 @@
-Funcionalidades del api de carros y dueños
-Métodos:
+<h1>Funcionalidades del api de carros y dueños
+Métodos:</h1>
+
+
 Creardueno: Es un método que recibe un Json de tipo POST con los parámetros para
 crear un dueño en la base de datos, si recibe el json y lo crea regresa un json
 con el dueño creado.
