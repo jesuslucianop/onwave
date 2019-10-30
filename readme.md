@@ -1,6 +1,15 @@
 <h1>Funcionalidades del api de carros y dueños
 Métodos:</h1>
 
+<h2>Guia previa de instalacion </h2>
+
+<ul>
+<li>1- Abrir la consola de comandos de composer posicionada en el proyecto</li>
+<li>2- correr el comando composer install</li>
+<li>3- Luego correr el comando composer run-script post-root-package-install</li>
+<li>Luego que se genere el archivo .env configurar Los datos del servidor previamente creada la base de datos</li>
+<li>Luego probar los siguientes metodos por postman</li>
+</ul>
 
 Creardueno: Es un método que recibe un Json de tipo POST con los parámetros para
 crear un dueño en la base de datos, si recibe el json y lo crea regresa un json
