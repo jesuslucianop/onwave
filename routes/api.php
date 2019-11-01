@@ -20,8 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('duenos','DuenosController@Obtenertodosduenos')->name('Obtenertodoslosduenos');
 Route::get('dueno','DuenosController@Obtenerdueno')->name('Obtenertodoslosduenos');
 Route::post('duenos','DuenosController@CrearduenoS')->name('crearlosduenos');
-Route::put('duenosedit','DuenosController@Editardueno')->name('editarlosduenos');
-Route::delete('duenosborrar','DuenosController@Eliminardueno')->name('eliminalosduenos');
+Route::put('duenos','DuenosController@Editardueno')->name('editarlosduenos');
+Route::delete('duenos','DuenosController@Eliminardueno')->name('eliminalosduenos');
 
     //Seccion de las rutas de los carros 
 Route::post('carros','CarrosController@Crearcarro')->name('crearloscarros');
@@ -31,6 +31,6 @@ Route::delete('carros','CarrosController@Eliminarcarro')->name('borrarloscarros'
 Route::put('carros','CarrosController@Editarcarros')->name('editarlosduenos');
 
 //Seccion carro_Dueno
-Route::get('duenosidcarro','Carro_duenoController@Obtenerduenoidcarro')->name('Obtenerduenoporidcarros');
+Route::get('duenos_busqueda_por_idcarro','Carro_duenoController@Obtenerduenoidcarro')->name('Obtenerduenoporidcarros');
 Route::get('carroiddueno','Carro_duenoController@Obtenercarroiddueno')->name('Obtenercarroiddueno');
 Route::delete('Eliminarduenoycarro','Carro_duenoController@Eliminarduenoycarro')->name('Eliminarduenoycarro');
